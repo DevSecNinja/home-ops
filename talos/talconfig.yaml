@@ -25,7 +25,8 @@ nodes:
       serial: "S65SNX0RB10109"
     machineSpec:
       secureboot: true
-    talosImageURL: factory.talos.dev/installer-secureboot/bf2113e1bea48d566f7d1e08eb780f832ccb56bbd7cf2f95769f7a04f9f2b184
+    # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=auto&cmdline=-console+console%3Dtty0+cpufreq.default_governor%3Dpowersave+consoleblank%3D300&cmdline-set=true&extensions=-&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ice-firmware&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fmei&platform=metal&secureboot=true&target=metal&version=1.12.4
+    talosImageURL: factory.talos.dev/installer-secureboot/61e136251a6f170da4601431504af18700ab5085b33831c7d0cfda197da5d928
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -45,7 +46,6 @@ patches:
   - "@./patches/global/machine-files.yaml"
   - "@./patches/global/machine-kubelet.yaml"
   - "@./patches/global/machine-network.yaml"
-  - "@./patches/global/machine-powersave.yaml"
   - "@./patches/global/machine-sysctls.yaml"
   - "@./patches/global/machine-time.yaml"
 

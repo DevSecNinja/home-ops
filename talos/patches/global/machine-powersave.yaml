@@ -1,5 +1,0 @@
-machine:
-  install:
-    extraKernelArgs:
-      - cpufreq.default_governor=powersave
-      - consoleblank=300 # Blank screen after 300 seconds (5 minutes) of inactivity
