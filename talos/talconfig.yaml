@@ -1,0 +1,55 @@
+---
+clusterName: kubernetes
+
+talosVersion: "${talosVersion}"
+kubernetesVersion: "${kubernetesVersion}"
+
+endpoint: https://192.168.60.50:6443
+additionalApiServerCertSans: &sans
+  - "127.0.0.1"
+  - "192.168.60.50"
+  - "svlk8s.ravensberg.org"
+additionalMachineCertSans: *sans
+
+clusterPodNets: ["10.42.0.0/16"]
+clusterSvcNets: ["10.43.0.0/16"]
+
+# Disable built-in CNI to use Cilium
+cniConfig:
+  name: none
+
+nodes:
+  - hostname: "svlk8s1"
+    ipAddress: "192.168.60.51"
+    installDiskSelector:
+      serial: "S65SNX0RB10109"
+    machineSpec:
+      secureboot: true
+    talosImageURL: factory.talos.dev/installer-secureboot/bf2113e1bea48d566f7d1e08eb780f832ccb56bbd7cf2f95769f7a04f9f2b184
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "4c:3b:df:bf:d8:c2"
+        dhcp: false
+        addresses:
+          - "192.168.60.51/24"
+        routes:
+          - gateway: "192.168.60.1"
+            network: 0.0.0.0/0
+        mtu: 1500
+        vip:
+          ip: "192.168.60.50"
+
+# Global patches
+patches:
+  - "@./patches/global/machine-files.yaml"
+  - "@./patches/global/machine-kubelet.yaml"
+  - "@./patches/global/machine-network.yaml"
+  - "@./patches/global/machine-sysctls.yaml"
+  - "@./patches/global/machine-time.yaml"
+
+# Controller patches
+controlPlane:
+  patches:
+    - "@./patches/controller/cluster.yaml"
+
