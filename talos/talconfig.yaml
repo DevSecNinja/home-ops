@@ -40,6 +40,21 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.60.50"
+    patches:
+      - # Encrypt system disk with TPM
+        |-
+        machine:
+          systemDiskEncryption:
+            state:
+              provider: luks2
+              keys:
+                - slot: 0
+                  tpm: {}
+            ephemeral:
+              provider: luks2
+              keys:
+                - slot: 0
+                  tpm: {}
 
 # Global patches
 patches:
