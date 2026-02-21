@@ -41,6 +41,8 @@ data:
         - Photopea:
             - icon: si-photopea-#e5e7eb
               href: https://www.photopea.com/
+  custom.css: ""
+  custom.js: ""
   docker.yaml: |
     ---
     # Docker integration disabled
