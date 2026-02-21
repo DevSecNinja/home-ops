@@ -63,3 +63,33 @@ tasks:
     cmd: talhelper gencommand reset --extra-flags="--reboot {{- if eq .CLI_FORCE false }} --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL{{ end }} --graceful=false --wait=false" | bash
     preconditions:
       - which talhelper
+
+  ###
+  ## Starting customizations from heres
+  ###
+
+  shutdown-node:
+    desc: Shutdown a Talos node [IP=required]
+    dir: '{{.TALOS_DIR}}'
+    cmd: talosctl shutdown --nodes {{.IP}}
+    requires:
+      vars: [IP]
+    preconditions:
+      - talosctl --nodes {{.IP}} get machineconfig
+      - talosctl config info
+      - test -f {{.TALOSCONFIG}}
+      - which talosctl
+
+  shutdown:
+    desc: Shutdown all Talos nodes
+    dir: '{{.TALOS_DIR}}'
+    prompt: This will shutdown all nodes in the cluster... continue?
+    cmd: talosctl shutdown --nodes {{.NODES}}
+    vars:
+      NODES:
+        sh: yq '[.nodes[].ipAddress] | join(",")' {{.TALOS_DIR}}/talconfig.yaml
+    preconditions:
+      - talosctl config info
+      - test -f {{.TALOSCONFIG}}
+      - test -f {{.TALOS_DIR}}/talconfig.yaml
+      - which talosctl yq
