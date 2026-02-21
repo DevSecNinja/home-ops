@@ -60,7 +60,8 @@ spec:
         runAsUser: 65534
         runAsGroup: 65534
     serviceAccount:
-      create: true
+      homepage:
+        enabled: true
     service:
       app:
         ports:
