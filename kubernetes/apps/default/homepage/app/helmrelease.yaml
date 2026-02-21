@@ -110,7 +110,7 @@ spec:
       next-cache:
         type: emptyDir
         globalMounts:
-          - path: /app/.next
+          - path: /app/.next/cache
     route:
       app:
         hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
