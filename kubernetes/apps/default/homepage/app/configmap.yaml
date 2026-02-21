@@ -46,6 +46,9 @@ data:
   docker.yaml: |
     ---
     # Docker integration disabled
+  proxmox.yaml: |
+    ---
+    # Proxmox integration disabled
   kubernetes.yaml: |
     ---
     mode: cluster
