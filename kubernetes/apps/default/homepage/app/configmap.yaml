@@ -55,7 +55,7 @@ data:
     gateway: true
   services.yaml: |
     ---
-    - Network:
+    - Infrastructure:
         - Cloudflared:
             href: https://dash.cloudflare.com
             icon: cloudflare-zero-trust.png
