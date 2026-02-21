@@ -1,0 +1,94 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  labels:
+    app.kubernetes.io/name: homepage
+data:
+  bookmarks.yaml: |
+    ---
+    - Developer:
+        - Ad Blocker Tester:
+            - href: https://d3ward.github.io/toolz/adblock
+              icon: si-adblock-#e5e7eb
+        - AdGuard Temporary Email:
+            - icon: adguard-home.svg
+              href: https://adguard.com/en/adguard-temp-mail/overview.html
+        - Certificate Search:
+            - href: https://crt.sh
+              icon: si-letsencrypt-#e5e7eb
+        - Cronjob Schedule Maker:
+            - icon: mdi-clock-outline-#e5e7eb
+              href: https://crontab.guru/
+        - Kubesearch:
+            - icon: kubernetes-dashboard.png
+              href: https://kubesearch.dev
+        - Speedtest:
+            - href: https://speed.cloudflare.com
+              icon: cloudflare
+    - GitHub:
+        - GitHub Repository:
+            - icon: si-github-#e5e7eb
+              href: https://github.com/DevSecNinja/home-ops
+        - Renovate Dashboard:
+            - icon: si-renovatebot
+              href: https://github.com/DevSecNinja/home-ops/issues/1
+        - Renovate Jobs:
+            - icon: si-renovatebot
+              href: https://developer.mend.io/github/DevSecNinja/home-ops
+    - Productivity:
+        - Photopea:
+            - icon: si-photopea-#e5e7eb
+              href: https://www.photopea.com/
+  docker.yaml: |
+    ---
+    # Docker integration disabled
+  kubernetes.yaml: |
+    ---
+    mode: cluster
+    gateway: true
+  services.yaml: |
+    ---
+    - Network:
+        - Cloudflared:
+            href: https://dash.cloudflare.com
+            icon: cloudflare-zero-trust.png
+            description: Cloudflared Tunnel
+            widget:
+              type: cloudflared
+              accountid: "{{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNTID}}"
+              tunnelid: "{{HOMEPAGE_VAR_CLOUDFLARED_TUNNELID}}"
+              key: "{{HOMEPAGE_VAR_CLOUDFLARED_API_TOKEN}}"
+  settings.yaml: |
+    ---
+    title: Home Dashboard
+    favicon: https://gethomepage.dev/favicon.ico
+    headerStyle: clean
+    layout:
+      - Infrastructure:
+          tab: Services
+          icon: mdi-server
+      - Monitoring:
+          tab: Services
+          icon: mdi-chart-box
+  widgets.yaml: |
+    ---
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: cluster
+        nodes:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+    - datetime:
+        text_size: xl
+        format:
+          dateStyle: long
+          timeStyle: short
+          hourCycle: h23
