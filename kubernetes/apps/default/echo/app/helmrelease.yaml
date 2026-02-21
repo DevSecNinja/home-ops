@@ -66,6 +66,8 @@ spec:
           gethomepage.dev/group: Infrastructure
           gethomepage.dev/icon: mdi-console
           gethomepage.dev/description: HTTP Echo Server
+          gethomepage.dev/pod-selector: >-
+            app.kubernetes.io/name=echo
         hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
         parentRefs:
           - name: envoy-internal
