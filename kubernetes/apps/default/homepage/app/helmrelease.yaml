@@ -29,7 +29,8 @@ spec:
               repository: ghcr.io/gethomepage/homepage
               tag: v1.10.1
             env:
-              HOMEPAGE_ALLOWED_HOSTS: "{{ .Release.Name }}.${SECRET_DOMAIN}"
+              # Homepage is behind Envoy Gateway (TLS + auth), safe to allow all hosts for probes
+              HOMEPAGE_ALLOWED_HOSTS: "*"
             envFrom:
               - secretRef:
                   name: homepage-secret
