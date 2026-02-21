@@ -49,6 +49,10 @@ spec:
               readiness: *probes
             securityContext:
               allowPrivilegeEscalation: false
+              # NOTE: Next.js will log warnings about failing to update the prerender cache
+              # (EROFS on /app/.next/server/pages/). This is cosmetic — pages are served from
+              # the build in the container image and the app functions normally without runtime caching.
+              readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
             resources:
               requests:
