@@ -107,6 +107,10 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /app/config/logs
+      next-cache:
+        type: emptyDir
+        globalMounts:
+          - path: /app/.next
     route:
       app:
         hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
