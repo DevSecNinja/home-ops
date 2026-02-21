@@ -10,8 +10,6 @@ spec:
   interval: 1h
   path: ./kubernetes/apps/default/homepage/app
   postBuild:
-    substitute:
-      CLUSTER_POD_CIDR: "10.42.0.0/16"
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
