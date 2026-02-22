@@ -1,5 +1,11 @@
 machine:
   kernel:
+    # Holy smokes: this config including the officialExtensions below
+    # cut the power usage in half on idle from 40W to 20W on my
+    # Dell i7-11850H, 16 threads, 32 GB laptop with Talos v1.12.4
+    # Make sure to include these officialExtensions in the Talos Image build:
+    # - siderolabs/nvidia-container-toolkit-lts
+    # - siderolabs/nvidia-open-gpu-kernel-modules-lts
     modules:
       - name: nvidia
       - name: nvidia_uvm
