@@ -25,8 +25,8 @@ nodes:
       serial: "S65SNX0RB10109"
     machineSpec:
       secureboot: true
-    # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=auto&cmdline=-console+console%3Dtty0+cpufreq.default_governor%3Dpowersave+-consoleblank+consoleblank%3D300&cmdline-set=true&extensions=-&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ice-firmware&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fmei&extensions=siderolabs%2Fxe&platform=metal&secureboot=true&target=metal&version=1.12.4
-    talosImageURL: factory.talos.dev/installer-secureboot/96ebf34dfb6e3c4fda872a51963a436d312887f0958d6f0322786a57b7bf1ac5
+    # https://factory.talos.dev/?arch=amd64&board=undefined&bootloader=sd-boot&cmdline=-console+console%3Dtty0+cpufreq.default_governor%3Dpowersave+-consoleblank+consoleblank%3D300&cmdline-set=true&extensions=-&extensions=siderolabs%2Fi915&extensions=siderolabs%2Fintel-ice-firmware&extensions=siderolabs%2Fintel-ucode&extensions=siderolabs%2Fmei&extensions=siderolabs%2Fnvidia-container-toolkit-lts&extensions=siderolabs%2Fnvidia-open-gpu-kernel-modules-lts&extensions=siderolabs%2Fxe&platform=metal&secureboot=true&target=metal&version=1.12.4
+    talosImageURL: factory.talos.dev/installer-secureboot/91168e33651841d2a30bd4f808c6c31a0d0d5956d7c05200f9840c39fc0b2e02
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
